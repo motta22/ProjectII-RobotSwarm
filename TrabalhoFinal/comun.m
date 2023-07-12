@@ -1,0 +1,13 @@
+global serialport
+telemovel=instrhwinfo('serial');
+telemovel.AvailableSerialPorts(1);
+
+serialport = serial(telemovel.AvailableSerialPorts(1),...
+            'InputBufferSize',4000,...
+            'Timeout',1,...
+            'TimerPeriod',0.2,...
+            'TimerFcn',@process_message);
+
+fopen(serialport);
+
+
